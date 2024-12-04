@@ -17,7 +17,7 @@ export default function ProductLayout({ children }: PropsWithChildren) {
   return (
     <>
       <header>
-        <Link href={'/products'} className={'my-10 flex justify-center gap-2'}>
+        <Link href={'/'} className={'my-10 flex justify-center gap-2'}>
           <Image
             className="rounded-2xl mr-2 -mt-1"
             src={'/market.png'}

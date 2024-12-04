@@ -1,16 +1,43 @@
 'use client'
 
-import { use } from 'react'
+import { use, useCallback, useState } from 'react'
 import { useProduct } from '@/app/(products)/[id]/hooks/use-product'
 import Image from 'next/image'
-import { ProductListItem } from '@/schemas/product'
 import { RatingStars } from '@/components/rating-stars'
+import { useRouter } from 'next/navigation'
 
 export interface ProductDetailPageProps {
   params: Promise<{ id: string }>
 }
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const [amount, setAmount] = useState('')
+
+  const router = useRouter()
+
+  const onChangeAmount = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setAmount(e.target.value)
+    },
+    []
+  )
+
+  const onClickBuy = () => {
+    if (amount >= '1') {
+      router.push(`/buy/${id}?amount=${amount}`)
+    } else {
+      alert('구매할 개수를 선택해주세요')
+    }
+  }
+
+  const onClickCart = () => {
+    if (amount >= '1') {
+      confirm('장바구니에 담겼습니다. 해당 페이지로 이동하시겠습니까?')
+    } else {
+      alert('장바구니에 담을 개수를 선택해주세요')
+    }
+  }
+
   const { id } = use(params)
 
   const { data, isLoading, error } = useProduct(id)
@@ -71,12 +98,21 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               className="focus:outline-blue-400 w-12 md:w-14 lg:w-16 xl:w-18 2xl:w-20 h-8 ml-2 text-center rounded-sm"
               type="number"
               placeholder="1"
+              onChange={onChangeAmount}
+              min="1"
             ></input>
 
-            <button className="bg-white hover:ring ring-blue-400/80 font-semibold  text-sm w-20 sm:w-24  md:w-28 md:text-md lg:w-32 lg:text-lg xl:w-36 xl:text-xl 2xl:w-40 2xl:text-2xl  ml-14 p-3 shadow-md rounded-xl">
+            <button
+              onClick={onClickCart}
+              className="bg-white hover:ring ring-blue-400/80 font-semibold  text-sm w-20 sm:w-24  md:w-28 md:text-md lg:w-32 lg:text-lg xl:w-36 xl:text-xl 2xl:w-40 2xl:text-2xl  ml-14 p-3 shadow-md rounded-xl"
+            >
               장바구니
             </button>
-            <button className="hover:ring ring-blue-400 bg-blue-300 font-semibold text-sm w-20 sm:w-24 md:w-28 md:text-md lg:w-32 lg:text-lg xl:w-36 xl:text-xl 2xl:w-40 2xl:text-2xl ml-10 p-3 shadow-md rounded-xl">
+
+            <button
+              onClick={onClickBuy}
+              className="hover:ring ring-blue-400 bg-blue-300 font-semibold text-sm w-20 sm:w-24 md:w-28 md:text-md lg:w-32 lg:text-lg xl:w-36 xl:text-xl 2xl:w-40 2xl:text-2xl ml-10 p-3 shadow-md rounded-xl"
+            >
               구매하기
             </button>
           </div>
