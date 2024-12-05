@@ -12,10 +12,12 @@ export default function BuyPage({ params }: ProductDetailPageProps) {
   const searchParams = useSearchParams()
   const amount = searchParams.get('amount')
 
-  const [amountSt, setAmountSt] = useState<any | null>('')
+  const [amountSt, setAmountSt] = useState('')
 
   useEffect(() => {
-    setAmountSt(amount)
+    if (typeof amount === 'string') {
+      setAmountSt(amount)
+    }
   }, [amount])
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +34,7 @@ export default function BuyPage({ params }: ProductDetailPageProps) {
     throw new Error(error.message)
   }
 
-  const totalPrice = (amountSt * data!.price).toFixed(2) as any | null
+  const totalPrice = Number((Number(amountSt) * data!.price).toFixed(2))
 
   const discountedPrice = (
     totalPrice -
