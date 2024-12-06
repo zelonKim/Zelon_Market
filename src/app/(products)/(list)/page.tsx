@@ -7,7 +7,7 @@ import { ProductList } from '@/app/(products)/(list)/components/product-list'
 export default function ProductsPage() {
   return (
     <Suspense>
-      <ProductSearchInput className={'my-8'} />
+      <ProductSearchInput className={'my-8 mt-20'} />
       <ProductList />
     </Suspense>
   )

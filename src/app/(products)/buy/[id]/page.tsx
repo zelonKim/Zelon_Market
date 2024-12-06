@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
+
 export default function BuyPage({ params }: ProductDetailPageProps) {
   const { id } = use(params)
 
@@ -43,7 +44,7 @@ export default function BuyPage({ params }: ProductDetailPageProps) {
 
   return (
     <>
-      <div className="flex shadow-lg border-2 shadow-blue-100 border-blue-300 p-1">
+      <div className="mt-20 flex shadow-lg border-2 shadow-blue-100 border-blue-300 p-1">
         <Image
           className="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
           width={100}

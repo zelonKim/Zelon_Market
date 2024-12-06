@@ -26,7 +26,7 @@ export function ProductSearchInput({
           DebHandleTermChange(value)
         }}
         className={
-          'border-2 border-blue-400 shadow-md shadow-blue-100 h-12 pl-12 mb-14 text-base focus:bg-blue-50'
+          'font-semibold border-2 border-blue-400 shadow-md shadow-blue-100 h-12 pl-12 mb-14 text-md focus:bg-blue-50'
         }
         placeholder={'찾고 싶은 상품을 검색해보세요.'}
       />
