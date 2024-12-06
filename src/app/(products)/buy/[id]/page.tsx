@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
-
 export default function BuyPage({ params }: ProductDetailPageProps) {
   const { id } = use(params)
 

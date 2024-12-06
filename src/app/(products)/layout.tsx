@@ -8,7 +8,6 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { UserGroupIcon } from '@heroicons/react/24/outline'
 import { UserCircleIcon } from '@heroicons/react/24/outline'
-import { UserPlusIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
   title: '젤론 마켓',
